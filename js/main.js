@@ -1,12 +1,13 @@
-var yyy = document.getElementById('drawCanvas');
-var context = yyy.getContext('2d');
+var drawSpace = document.getElementById('drawCanvas');
+var context = drawSpace.getContext('2d');
 var lineWidth = 5;
 
 //  设置画布尺寸(自适应)
-autoSetCanvasSize(yyy);
+autoSetCanvasSize(drawSpace);
 
 //  监听用户鼠标动作
-listenToUser(yyy);
+listenToUser(drawSpace);
+stopDefault();
 
 // 默认状态橡皮擦不启动
 var eraserEnabled = false;
@@ -27,11 +28,11 @@ eraser.onclick = function() {
 }
 //  清空屏幕函数
 clear.onclick = function() {
-    context.clearRect(0, 0, yyy.width, yyy.height);
+    context.clearRect(0, 0, drawSpace.width, drawSpace.height);
 }
 //  下载按钮
 save.onclick = function() {
-    var url = yyy.toDataURL("image/png");
+    var url = drawSpace.toDataURL("image/png");
     console.log(url);
     var a = document.createElement('a');
    
@@ -193,4 +194,17 @@ function listenToUser(canvas) {
             using = false;
         }
     }
+}
+/**
+ * 禁止手机浏览器拖动
+ */
+function stopDefault(){
+    window.ontouchmove = function(e){
+        e.preventDefault && e.preventDefault();
+        e.returnValue = false;
+        e.stopPropagation && e.stopPropagation();
+        return false;
+    }
+    document.body.style.height = '100%';
+    document.body.style.overflow = 'hidden';
 }
