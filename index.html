@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 阻止页面在手机端缩放  980 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    
+</head>
+<body>
+    <canvas id="drawCanvas"></canvas>
+    <div id="actions" class="actions">
+        <!-- <button id="eraser">橡皮擦</button>
+        <button id="brush">画笔</button> -->
+        <svg id="pencil" class="active icon" aria-hidden="true">
+            <use xlink:href="#icon-pencil"></use>
+        </svg>
+        <svg id="eraser" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-erase"></use>
+        </svg>
+        <svg id="clear" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-clear"></use>
+        </svg>
+        <svg id="save" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-Save"></use>
+        </svg>
+    </div>
+    <ol class="colors">
+        <li id="black" class="black active"></li>
+        <li id="red" class="red"></li>
+        <li id="yellow" class="yellow"></li>
+        <li id="green" class="green"></li>
+    </ol>
+    <ol class="sizes">
+        <li id="thin" class="thin"></li>
+        <li id="thick" class="thick"></li>
+    </ol>
+    <script src="//at.alicdn.com/t/font_482069_tq0ubs8aicc8fr.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
