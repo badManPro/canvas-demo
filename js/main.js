@@ -126,8 +126,11 @@ function listenToUser(canvas) {
     //  特性检测（检测是否支持touch）
     if (document.body.ontouchstart !== undefined) {
         // 触屏设备(获取坐标的方式不同)
-        document.ontouchmove = function(e){ e.preventDefault(); };
-        canvas.ontouchstart = function(aaa) {
+
+        document.body.addEventListener('ontouchmove' , function(e) {
+            e.preventDefault()
+        })
+            canvas.ontouchstart = function(aaa) {
             var x = aaa.touches[0].clientX;
             var y = aaa.touches[0].clientY;
             using = true;
