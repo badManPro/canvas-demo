@@ -2,12 +2,13 @@ var drawSpace = document.getElementById('drawCanvas');
 var context = drawSpace.getContext('2d');
 var lineWidth = 5;
 
+
+
 //  设置画布尺寸(自适应)
 autoSetCanvasSize(drawSpace);
 
 //  监听用户鼠标动作
 listenToUser(drawSpace);
-stopDefault();
 
 // 默认状态橡皮擦不启动
 var eraserEnabled = false;
@@ -125,6 +126,7 @@ function listenToUser(canvas) {
     //  特性检测（检测是否支持touch）
     if (document.body.ontouchstart !== undefined) {
         // 触屏设备(获取坐标的方式不同)
+        document.ontouchmove = function(e){ e.preventDefault(); };
         canvas.ontouchstart = function(aaa) {
             var x = aaa.touches[0].clientX;
             var y = aaa.touches[0].clientY;
@@ -194,17 +196,4 @@ function listenToUser(canvas) {
             using = false;
         }
     }
-}
-/**
- * 禁止手机浏览器拖动
- */
-function stopDefault(){
-    window.ontouchmove = function(e){
-        e.preventDefault && e.preventDefault();
-        e.returnValue = false;
-        e.stopPropagation && e.stopPropagation();
-        return false;
-    }
-    document.body.style.height = '100%';
-    document.body.style.overflow = 'hidden';
 }
